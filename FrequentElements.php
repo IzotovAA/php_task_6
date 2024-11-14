@@ -75,3 +75,28 @@ class Solution2 {
         return $result;
     }
 }
+
+class Solution3
+{
+    /**
+     * @param Integer[] $nums
+     * @param Integer $k
+     * @return Integer[]
+     */
+    public function topKFrequent(array $nums, int $k): array
+    {
+        $result = [];
+
+        foreach ($nums as $num) {
+            if (array_key_exists($num, $result)) {
+                $result[$num]++;
+            } else {
+                $result[$num] = 1;
+            }
+        }
+
+        arsort($result);
+
+        return array_slice(array_keys($result), 0, $k);
+    }
+}
